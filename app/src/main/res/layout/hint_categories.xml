@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/label_helpful_hints"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.03"
+        android:paddingTop="10dp"/>
+
+    <TextView
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/hints_section_title_label"
+        android:id="@+id/textView2"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.04" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_papers"
+        android:id="@+id/btn_papers"
+        android:layout_weight="0.30"
+        android:background="#33ccff"
+        android:textSize="24dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_projects"
+        android:layout_weight="0.3"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/label_projects"
+        android:background="#ff9966"
+        android:textSize="24dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_exams"
+        android:id="@+id/btn_exams"
+        android:layout_weight="0.25"
+        android:singleLine="false"
+        android:background="#ffcc66"
+        android:textSize="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="any more you&apos;d like to see?"
+        android:id="@+id/helpful_hints_feedback_link"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.04"
+        android:paddingTop="10dp"/>
+</LinearLayout>

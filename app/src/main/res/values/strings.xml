@@ -1,0 +1,104 @@
+<resources>
+        <string name="app_name">MetaManager</string>
+        <string name="action_settings">Settings</string>
+        <string name="email_label">Email</string>
+        <string name="username_label">Username</string>
+        <string name="password_label">Password</string>
+        <string name="login_label">Login</string>
+        <string name="register_new_account">Register New Account</string>
+        <string name="first_name">First Name</string>
+        <string name="last_name">Last Name</string>
+
+        <string name="link_to_register_text">New to MetaManager? Sign-Up </string>
+        <string name="link_to_sign_in_text">Already registered! Login here</string>
+        <string name="content_decription_assignment_button">Icon for Assingment Button</string>
+        <string name="content_decription_grades_button">Icon for Grades Button</string>
+        <string name="content_decription_helpful_hints_button">Icon for Helpful Hints Button</string>
+
+
+
+        <string name="btn_login">LOGIN</string>
+        <string name="btn_register">REGISTER</string>
+        <string name="welcome">Welcome</string>
+        <string name="btn_logout">LOGOUT</string>
+        <string name="name">Fullname</string>
+
+
+        <string name="dibbit_title_hint"> Put Assignment Name Here</string>
+        <string name="dibbit_title_label"> Name</string>
+        <string name="dibbit_done_label"> Is it done yet?</string>
+        <string name="dibbit_date_time_label">Date and Time</string>
+        <string name="dibbit_description_label">  Description:</string>
+        <string name="dibbit_description_hint">Tell me more about it</string>
+        <string name="dibbit_location_label">  Location:</string>
+        <string name="dibbit_location_hint">Where is it?</string>
+        <string name="dibbit_difficulty_label">  Difficulty:</string>
+        <string name="date_picker_title">  Date of Assignment:</string>
+        <string name="dialog_editDate">Date</string>
+        <string name="dialog_editDateOrTime">Do you want to edit the date</string>
+        <string name="new_dibbit">New Assignment</string>
+        <string name="show_subtitle">Show Total</string>
+        <string name="hide_subtitle">Hide Name</string>
+        <string name="subtitle_format">%1$s dibbits</string>
+        <string name="delete_dibbit">Delete Assignment</string>
+        <string name="empty_dibbit_list_label"> No Assignments Yet</string>
+        <string name="view_list_label">LIST</string>
+        <string name="view_calendar_label">CALENDAR</string>
+
+        <string name="title_activity_map">Map</string>
+
+
+
+
+
+
+
+
+        <string name="Username">Username</string>
+        <string name="Password">Password</string>
+        <string name="Name">Fullname</string>
+        <string name="btn_link_to_register">Not a member? Sign up now.</string>
+        <string name="btn_link_to_login">Already registred? Login.</string>
+        <string name="label_exams">Exams</string>
+        <string name="label_projects">Projects</string>
+        <string name="label_papers">Papers</string>
+        <string name="hints_section_title_label">Which type do you need?</string>
+        <string name="label_helpful_hints">Helpful Hints</string>
+        <string name="Logout">Logout</string>
+        <string name="show_count">show count </string>
+        <string name="hide_count">hide count </string>
+        <string name="hints_content">lorem_ipsum</string>
+
+
+
+        <plurals name="subtitle_plural">
+            <item quantity="one">%1$s dibbit</item>
+            <item quantity="other">%1$s dibbit</item>
+        </plurals>
+
+
+
+        <string-array name="class_section_options">
+            <item name="A"> A </item>
+            <item name="B"> B </item>
+            <item name="C"> C </item>
+            <item name="D"> D </item>
+        </string-array>
+
+        <string-array name="assignment_category_options">
+                <item name="A"> Exam </item>
+                <item name="B"> Paper </item>
+                <item name="C"> Projects </item>
+        </string-array>
+
+
+        <string-array name="class_year_options">
+            <item name="16-17"> 2016-2017 </item>
+            <item name="17-18"> 2017-2018 </item>
+            <item name="18-19"> 2018-2019 </item>
+            <item name="19-20"> 2019-2020 </item>
+
+        </string-array>
+
+
+</resources>

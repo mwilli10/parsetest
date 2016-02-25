@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="#ffcc66"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="340dp"
+        android:layout_height="403dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ask questions in class on topics you are unclear about                                                 When taking the test, make sure you highlight key words like NOT, OR, AND, etc."
+        android:id="@+id/hintTextView"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="32dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
+
+    <CheckBox
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Helpful?"
+        android:id="@+id/hintCheckBox"
+        android:layout_weight="0.20"
+        android:textSize="24dp" />
+</LinearLayout>

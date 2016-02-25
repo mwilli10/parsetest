@@ -1,0 +1,29 @@
+<!-- fragment_screen_slide_page.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+
+    <TextView android:id="@android:id/text1"
+        style="?android:textAppearanceLarge"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="8.14"
+        android:focusable="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" />
+
+    <CheckBox android:id="@android:id/checkbox"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Helpful?"
+        android:layout_weight="0.20"
+        android:textSize="24dp" />
+
+</LinearLayout>

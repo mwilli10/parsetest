@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <!--<include layout="@layout/view_camera_and_title"/>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="horizontal">-->
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp">
+
+            </LinearLayout>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dibbit_title_label"
+
+            android:layout_weight="0.58"
+            android:textSize="24dp" />
+
+    </LinearLayout>
+
+
+    <!--</LinearLayout>-->
+
+    <EditText android:id="@+id/dibbit_title"
+            android:hint="Assignment Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Category"
+        android:id="@+id/textView3"
+        android:textSize="24dp" />
+
+    <EditText
+        android:hint="Exam, Paper, Project"
+        android:layout_width="321dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:id="@+id/dibbit_category" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text= "Due Date"
+        android:textSize="24dp" />
+
+    <Button android:id="@+id/dibbit_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dibbit_description_label"
+        android:textSize="24dp"
+        android:layout_weight="0.18" />
+
+
+    <EditText android:id="@+id/dibbit_description"
+              android:hint="@string/dibbit_description_hint"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="16dp"
+              android:layout_marginRight="16dp"
+        android:layout_weight="0.56" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/dibbit_difficulty_label"
+            android:textSize="22dp"
+            android:textIsSelectable="false" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dibbit_difficulty_ratingBar"/>
+
+    </LinearLayout>
+
+    <CheckBox android:id="@+id/dibbit_done"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="16dp"
+              android:layout_marginRight="16dp"
+              android:text="@string/dibbit_done_label"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="109dp"
+        android:layout_height="wrap_content"
+        android:text="save"
+        android:id="@+id/btn_save"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/dibbit_photo"
+        android:layout_alignStart="@+id/dibbit_photo"
+        android:layout_gravity="center_horizontal" />
+
+
+</LinearLayout>
