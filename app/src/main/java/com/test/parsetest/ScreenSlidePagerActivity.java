@@ -32,8 +32,9 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
     private static final String HINT = "Hint";
     public static final String ARG_PAGE = "page";
     private String mCategory = null;
-    //    public List<Hints> mHints = new ArrayList<>();
+    public List<Hints> mHints;
     private static HintsLab sHintsLab;
+
     private String[] paper = {"Have someone edit your paper for things that don’t make sense before finalizing. Read your paper out loud to spot grammatical errors.",
             " Review your notes and textbooks to get supporting facts for your paper. Write the body of your paper first, then go back to the intro and conclusion to know what to address.",
             "Write an outline of your paper (intro, paragraph 1 topic, paragraph 2 topic, conclusion). Create a rough draft of your paper – don’t worry about making smooth transitions, just get the important parts down first!",
@@ -66,6 +67,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
@@ -77,10 +79,6 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
             mCategory = (String) savedInstanceState.getSerializable(CATEGORY);
         }
 
-
-//        getHints();
-
-
         setContentView(R.layout.activity_screen_slide);
 
         // Instantiate a ViewPager and a PagerAdapter.
@@ -88,6 +86,8 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -116,7 +116,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
             ScreenSlidePageFragment fragment = ScreenSlidePageFragment.create(position);
             page = fragment.getArguments().getInt(ARG_PAGE);
             Bundle bundle = new Bundle();
-            bundle.putString(HINT, getHint(mCategory, page));
+//            bundle.putString(HINT, getHint(mCategory, page));
             bundle.putString(CATEGORY, mCategory);
             bundle.putInt(ARG_PAGE, page);
             fragment.setArguments(bundle);
@@ -132,38 +132,8 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
     }
 
 
-//    public List<Hints>  getHints(){
-//
-//        ParseQuery<ParseObject> query = ParseQuery.getQuery("Hints");
-//        query.whereEqualTo("type", "Paper");
-//        query.findInBackground(new FindCallback<ParseObject>() {
-//            public void done(List<ParseObject> objects, ParseException e) {
-//                if (e == null) {
-//                    Toast.makeText(getApplicationContext(), "PASS",
-//                            Toast.LENGTH_SHORT).show();
-//                    for (ParseObject hint : objects) {
-//
-//                        mHints.add((Hints) hint);
-//
-//                        Toast.makeText(getApplicationContext(), "PASS" + ((Hints) hint).getHintText(),
-//                                Toast.LENGTH_SHORT).show();
-//
-//                    }
-//
-//
-//                } else {
-//                    Log.d("Post retrieval", "Error: " + e.getMessage());
-//                }
-//            }
-//
-//        });
-//        Toast.makeText(getApplicationContext(), "PASS" + mHints.get(1).getHintText(),
-//                Toast.LENGTH_SHORT).show();
-//        return mHints;
-//    }
 
-
-    private String getHint(String category, int page) {
+    private String getHints(String category, int page) {
         switch (category) {
             case "Paper":
                 return paper[page];

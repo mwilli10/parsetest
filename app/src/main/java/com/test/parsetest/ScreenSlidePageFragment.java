@@ -22,6 +22,7 @@ public class ScreenSlidePageFragment extends Fragment {
     private CheckBox mhintCheck;
     private String mCategory;
     private String mHint;
+    private List<Hints> mHints;
     private static HintsLab sHintsLab;
     private static final String CATEGORY = "Category";
     private static final String HINT = "Hint";
@@ -51,19 +52,16 @@ public class ScreenSlidePageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = this.getArguments();
+        setHasOptionsMenu(true);
         if (bundle != null) {
             mCategory = bundle.getString(CATEGORY);
-             mHint= bundle.getString(HINT);
-
-//            sHintsLab = HintsLab.get(getContext());
-//            mHints = sHintsLab.updateHints(mCategory);
-////            mHints = sHintsLab.getHints();
-//            System.out.print(mHints);
+            mHint= bundle.getString(HINT);
             mPageNumber = bundle.getInt(ARG_PAGE);
-
         }
+        mCategory = getArguments().getString(CATEGORY);
         mPageNumber = getArguments().getInt(ARG_PAGE);
-
+        HintsLab hintsLab = HintsLab.get(getActivity());
+        mHints = hintsLab.getHints(mCategory);
 
     }
 
@@ -72,12 +70,14 @@ public class ScreenSlidePageFragment extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+            setHasOptionsMenu(true);
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.fragment_hints_slide_screen, container, false);
-            if (mCategory == "Paper"){
+            if (mCategory.equals("Paper")){
                 rootView.setBackgroundColor(getResources().getColor(R.color.papers));
+
             }
-            else if(mCategory == "Project"){
+            else if(mCategory.equals("Project")){
                 rootView.setBackgroundColor(getResources().getColor(R.color.projects));
             }
             else{
@@ -85,12 +85,18 @@ public class ScreenSlidePageFragment extends Fragment {
             }
 
                     // Set the title view to show the page number.
-                    ((TextView) rootView.findViewById(android.R.id.text1)).setText(mHint);
+                    ((TextView) rootView.findViewById(android.R.id.text1)).setText(mHints.get(mPageNumber).getHintText());
         mhintCheck =  (CheckBox) rootView.findViewById(android.R.id.checkbox);
             mhintCheck.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //TODO
+                    if (mhintCheck.isChecked()) {
+                        mHints.get(mPageNumber).incrementHelpful();
+                    }
+                    else{
+                        mHints.get(mPageNumber).decrementHelpful();
+                    }
                 }
             });
         return rootView;

@@ -62,7 +62,9 @@ public class AssignmentLab {
 
         public void updateDibbits() {
             ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Assignment");
+            ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Assignment");
             query1.whereEqualTo("mUser", ParseUser.getCurrentUser());
+            query2.whereEqualTo("isDone", false);
 
 
             List<ParseQuery<ParseObject>> queries = new ArrayList<ParseQuery<ParseObject>>();

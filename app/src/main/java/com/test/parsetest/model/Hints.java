@@ -18,6 +18,7 @@ public class Hints extends ParseObject {
     public int getHelpfulCnt(){
         return getInt("helpfulCnt");
     }
+
     public void incrementHelpful() {
         int cnt = getHelpfulCnt()+1;
 
@@ -36,5 +37,7 @@ public class Hints extends ParseObject {
     }
 
 
-
+    public String getType(){
+        return getString("type");
+    }
 }

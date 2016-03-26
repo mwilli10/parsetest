@@ -33,7 +33,8 @@
                 android:text="@string/dibbit_title_label"
 
             android:layout_weight="0.58"
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            android:paddingLeft="15dp" />
 
     </LinearLayout>
 
@@ -52,16 +53,24 @@
         android:layout_height="wrap_content"
 
         android:text="Category"
-        android:id="@+id/textView3"
-        android:textSize="24dp" />
+        android:id="@+id/dibbit_category"
+        android:textSize="24dp"
+        android:paddingLeft="15dp" />
 
-    <EditText
-        android:hint="Exam, Paper, Project"
-        android:layout_width="321dp"
+    <!--<EditText-->
+        <!--android:hint="Exam, Paper, Project"-->
+        <!--android:layout_width="321dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="16dp"-->
+        <!--android:layout_marginRight="16dp"-->
+        <!--android:id="@+id/dibbit_category" />-->
+
+    <Spinner
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:id="@+id/dibbit_category" />
+        android:focusable="false"
+        android:spinnerMode="dropdown"
+        android:id="@+id/dibbit_category_dropdown" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -76,7 +85,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text= "Due Date"
-        android:textSize="24dp" />
+        android:textSize="24dp"
+        android:paddingLeft="15dp" />
 
     <Button android:id="@+id/dibbit_date"
         android:layout_width="match_parent"
@@ -90,7 +100,8 @@
         android:layout_height="wrap_content"
         android:text="@string/dibbit_description_label"
         android:textSize="24dp"
-        android:layout_weight="0.18" />
+        android:layout_weight="0.18"
+        android:paddingLeft="15dp" />
 
 
     <EditText android:id="@+id/dibbit_description"
@@ -107,13 +118,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp">
+        android:layout_marginRight="16dp"
+        android:paddingLeft="15dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/dibbit_difficulty_label"
-            android:textSize="22dp"
+            android:textSize="18dp"
             android:textIsSelectable="false" />
 
         <RatingBar

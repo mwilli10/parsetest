@@ -28,11 +28,11 @@
         <string name="dibbit_title_label"> Name</string>
         <string name="dibbit_done_label"> Is it done yet?</string>
         <string name="dibbit_date_time_label">Date and Time</string>
-        <string name="dibbit_description_label">  Description:</string>
+        <string name="dibbit_description_label">  Description</string>
         <string name="dibbit_description_hint">Tell me more about it</string>
         <string name="dibbit_location_label">  Location:</string>
         <string name="dibbit_location_hint">Where is it?</string>
-        <string name="dibbit_difficulty_label">  Difficulty:</string>
+        <string name="dibbit_difficulty_label">  Difficulty</string>
         <string name="date_picker_title">  Date of Assignment:</string>
         <string name="dialog_editDate">Date</string>
         <string name="dialog_editDateOrTime">Do you want to edit the date</string>
@@ -70,6 +70,8 @@
         <string name="hints_content">lorem_ipsum</string>
 
 
+        <string name="assn_completed_label">Completed? </string>
+
 
         <plurals name="subtitle_plural">
             <item quantity="one">%1$s dibbit</item>
@@ -88,7 +90,12 @@
         <string-array name="assignment_category_options">
                 <item name="A"> Exam </item>
                 <item name="B"> Paper </item>
-                <item name="C"> Projects </item>
+                <item name="C"> Project </item>
+        </string-array>
+
+        <string-array name="assignment_completed_options">
+                <item name="Y"> Yes </item>
+                <item name="N"> No </item>
         </string-array>
 
 

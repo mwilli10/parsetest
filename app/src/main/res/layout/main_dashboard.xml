@@ -6,7 +6,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
-    android:background="@color/bg_main">
+    android:background="#2f7be8">
 
     <ImageButton
         android:layout_width="240dp"
@@ -14,9 +14,9 @@
         android:id="@+id/assignmentButton"
         android:layout_gravity="center_horizontal"
         android:contentDescription="@string/content_decription_assignment_button"
-        android:src="@mipmap/assignments_launcher"
+        android:src="@drawable/google_grade"
         android:scaleType="fitXY"
-        android:background="@color/bg_main" />
+        android:background="#2f7be8" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -32,8 +32,8 @@
             android:layout_height="275dp"
             android:id="@+id/gradesButton"
             android:contentDescription="@string/content_decription_grades_button"
-            android:src="@mipmap/grades_launcher"
-            android:background="@color/bg_main"
+            android:src="@drawable/google_assn"
+            android:background="#2f7be8"
             android:scaleType="fitXY" />
 
         <ImageButton
@@ -41,8 +41,8 @@
             android:layout_height="275dp"
             android:id="@+id/hintButton"
             android:contentDescription=""
-            android:src="@mipmap/hint_launcher"
-            android:background="@color/bg_main"
+            android:src="@drawable/google_hint"
+            android:background="#2f7be8"
             android:scaleType="fitXY"
             android:adjustViewBounds="false" />
 

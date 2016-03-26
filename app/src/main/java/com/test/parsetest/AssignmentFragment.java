@@ -112,26 +112,26 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
             }
         });
 
-        mCategoryField = (EditText) v.findViewById(R.id.dibbit_category);
-        mCategoryField.setText(mDibbit.getCategory());
-        mCategoryField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                //This space intentionally left blank
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //This space intentionally left blank
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                //This space intentionally left blank
-            }
-        });
+//        mCategoryField = (EditText) v.findViewById(R.id.dibbit_category);
+//        mCategoryField.setText(mDibbit.getCategory());
+//        mCategoryField.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//                //This space intentionally left blank
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                //This space intentionally left blank
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                //This space intentionally left blank
+//            }
+//        });
         mCategoryField = (TextView) v.findViewById(R.id.dibbit_category);
-        mCategory = (Spinner) v.findViewById(R.id.class_section_dropdown);
+        mCategory = (Spinner) v.findViewById(R.id.dibbit_category_dropdown);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.assignment_category_options, android.R.layout.simple_spinner_dropdown_item);
         adapter
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -204,11 +204,11 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
             @Override
             public void onClick(View v) {
                 mDibbit.setName(mTitleField.getText().toString());
-                mDibbit.setCategory(mCategoryField.getText().toString());
+                mDibbit.setCategory(mCategory.getSelectedItem().toString());
                 mDibbit.setDone(mDoneCheckBox.isChecked(), getContext());
                 mDibbit.setDifficulty(mRatingBar.getRating());
                 mDibbit.setDescription(mDescriptionBox.getText().toString());
-                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT);
+                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
 
             }
         });

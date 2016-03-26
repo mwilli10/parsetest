@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+    <!--</LinearLayout>-->
+
+        <EditText android:id="@+id/dibbit_title"
+            android:hint="Assignment Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Did you complete all your goals for the assignment? "
+            android:id="@+id/assn_completed"
+            android:textSize="24dp"
+            android:paddingLeft="15dp" />
+
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:spinnerMode="dropdown"
+            android:id="@+id/assn_completed_dropdown" />
+
+        <!--<LinearLayout-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:weightSum="1">-->
+
+        <!--</LinearLayout>-->
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:paddingLeft="15dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rate how well you followed your initial plan:"
+                android:textSize="18dp"
+                android:textIsSelectable="false" />
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/assn_plan_followed_ratingBar"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= "Check off which strategies you used:"
+            android:textSize="24dp"
+            android:paddingLeft="15dp" />
+
+        <CheckBox android:id="@+id/strat1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Planning"/>
+
+        <CheckBox android:id="@+id/strat2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Asking for help"/>
+
+        <CheckBox android:id="@+id/strat3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Using different resources for information"/>
+
+        <CheckBox android:id="@+id/strat4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Studying"/>
+
+        <CheckBox android:id="@+id/strat5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Editing"/>
+
+        <EditText android:id="@+id/strat6"
+            android:hint="Other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="0.56" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How many hours did you spend assignment?"
+            android:textSize="24dp"
+            android:layout_weight="0.18"
+            android:paddingLeft="15dp" />
+
+        <EditText android:id="@+id/assn_time_spent"
+            android:hint="Other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="0.56" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:paddingLeft="15dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rate How much effort did you put into the assignment:"
+                android:textSize="18dp"
+                android:textIsSelectable="false" />
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/assn_effort_ratingBar"/>
+
+        </LinearLayout>
+
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What will you do differently next time to further improve?"
+            android:textSize="24dp"
+            android:layout_weight="0.18"
+            android:paddingLeft="15dp" />
+
+            <EditText android:id="@+id/assn_reflection"
+                android:hint="Other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="0.56" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="109dp"
+            android:layout_height="wrap_content"
+            android:text="save"
+            android:id="@+id/btn_save"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/dibbit_photo"
+            android:layout_alignStart="@+id/dibbit_photo"
+            android:layout_gravity="center_horizontal" />
+
+    </ScrollView>
+
+</LinearLayout>

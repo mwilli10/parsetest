@@ -27,7 +27,7 @@ public class HintsLab {
 
 
     public List<Hints> mHints;
-    public String [] hints = new String [5];
+    public String[] hints = new String[5];
 
     private HintsLab(Context context) {
         mContext = context;
@@ -43,12 +43,23 @@ public class HintsLab {
     }
 
 
+    public void updateHints() {
 
+        ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Hints");
+        query1.whereEqualTo("type", "Paper");
 
-    public List<Hints> updateHints(String category) {
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Hints");
+        query1.whereEqualTo("type", "Project");
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Hints");
-        query.whereEqualTo("type", "Paper");
+        ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Hints");
+        query1.whereEqualTo("type", "Exam");
+
+        List<ParseQuery<ParseObject>> queries = new ArrayList<ParseQuery<ParseObject>>();
+        queries.add(query1);
+        queries.add(query2);
+        queries.add(query3);
+
+        ParseQuery<ParseObject> query = ParseQuery.or(queries);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
@@ -59,28 +70,55 @@ public class HintsLab {
                         mHints.add((Hints) hint);
 //                        Toast.makeText(mContext, "PASS" + ((Hints) hint).getHintText(),
 //                                Toast.LENGTH_SHORT).show();
-                        hints[0] = ((Hints) hint).getHintText();
                     }
 
-//                    Toast.makeText(mContext, "PASS" + mHints.get(1).getHintText(),
-//                            Toast.LENGTH_SHORT).show();
                 } else {
                     Log.d("Post retrieval", "Error: " + e.getMessage());
                 }
             }
 
         });
-//        Toast.makeText(mContext, "PASS" + mHints.get(1).getHintText(),
-//                Toast.LENGTH_SHORT).show();
-        return mHints;
-        }
 
-
-    public String[] getHints() {
-        Toast.makeText(mContext, "PASS" + hints[0],
-                            Toast.LENGTH_SHORT).show();
-        return hints;
     }
 
+
+    public List<Hints> getHintsAll() {
+
+        return mHints;
+    }
+
+    public List<Hints> getHints(String category) {
+        List<Hints> hints = new ArrayList();
+        int i;
+        switch (category) {
+            case "Paper":
+                for (i = 0; i < mHints.size(); i++) {
+                    if (mHints.get(i).getType().equals("Paper")) {
+                        hints.add(mHints.get(i));
+                    }
+                }
+                Toast.makeText(mContext , hints.toString(),
+                        Toast.LENGTH_SHORT).show();
+                return hints;
+
+            case "Project":
+                for (i = 0; i < mHints.size(); i++) {
+                    if (mHints.get(i).getType().equals("Project")) {
+                        hints.add(mHints.get(i));
+                    }
+                }
+                return hints;
+            case "Exam":
+                for (i = 0; i < mHints.size(); i++) {
+                    if (mHints.get(i).getType().equals("Exam")) {
+                        hints.add(mHints.get(i));
+                    }
+                }
+                return hints;
+
+            default:
+                return hints;
+        }
+    }
 
 }

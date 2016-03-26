@@ -3,6 +3,8 @@ package com.test.parsetest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -104,7 +106,10 @@ public class  AssignmentListFragment extends Fragment{
                 addDibbit();
                 return true;
             case R.id.menu_item_refresh:
-                updateUI();
+                //updateUI();
+
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.detach(this).attach(this).commit();
                 return true;
             case R.id.menu_item_show_subtitle:
                 mSubtitleVisible = !mSubtitleVisible;
@@ -138,8 +143,7 @@ public class  AssignmentListFragment extends Fragment{
     }
 
 
-    public void updateUI() {
-        AssignmentLab dibbitLab = AssignmentLab.get(getActivity());
+    public void updateUI() {AssignmentLab dibbitLab = AssignmentLab.get(getActivity());
         dibbitLab.updateDibbits();
 
         List<Assignment> dibbits = dibbitLab.getDibbits();
@@ -197,7 +201,7 @@ public class  AssignmentListFragment extends Fragment{
 //                mBackground.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.dull_light_green));
 //            }
             mTitleTextView.setText(mDibbit.getName());
-            mDateTextView.setText(android.text.format.DateFormat.format("EEEE, MMM dd, yyyy, hh:mm a", mDibbit.getDate()));
+            mDateTextView.setText(android.text.format.DateFormat.format("EEEE, MMM dd, yyyy", mDibbit.getDate()));
 
             mDoneCheckBox.setChecked(mDibbit.isDone());
             mDoneCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

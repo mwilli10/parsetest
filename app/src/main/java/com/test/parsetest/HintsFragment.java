@@ -24,6 +24,8 @@ public class HintsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        HintsLab hintsLab = HintsLab.get(getActivity());
+        hintsLab.updateHints();
         setHasOptionsMenu(true);
 
     }
@@ -51,6 +53,10 @@ public class HintsFragment extends Fragment {
         mProjectsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mCategory = "Project";
+                Intent intent = new Intent(getActivity(), ScreenSlidePagerActivity.class);
+                intent.putExtra(CATEGORY, mCategory);
+                startActivity(intent);
 
             }
         });
@@ -58,6 +64,10 @@ public class HintsFragment extends Fragment {
         mExamButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mCategory = "Exam";
+                Intent intent = new Intent(getActivity(), ScreenSlidePagerActivity.class);
+                intent.putExtra(CATEGORY, mCategory);
+                startActivity(intent);
 
             }
         });

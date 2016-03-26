@@ -16,16 +16,16 @@ import java.util.UUID;
 /**
  * Created by Morgan on 2/2/16.
  */
-@ParseClassName("Assignment")
-public class Assignment extends ParseObject {
+@ParseClassName("Grade")
+public class Grade extends ParseObject {
     private UUID mId;
 
 
-     public Assignment() {
+    public Grade() {
         //Constructor makes Dibbit with random ID and empty date
         mId = UUID.randomUUID();
         put("mUser", ParseUser.getCurrentUser());
-         put("mIsDone", false);
+
 
 
         saveInBackground();
@@ -36,31 +36,31 @@ public class Assignment extends ParseObject {
         return mId;
     }
 
-    public String getDescription() {
-        return getString("mDescription");
+    public String getStrategiesUsed() {
+        return getString("strategiesUsed");
     }
 
-    public void setDescription(String description) {
-        put("mDescription", description);
+    public void setStrategiesUsed(String strategies) {
+        put("strategiesUsed", strategies);
         saveInBackground();
     }
 
-    public String getCategory() {
-        return getString("mCategory");
+    public double getTimeSpentHrs() {
+        return getDouble("timeSpent_hrs");
     }
 
-    public void setCategory(String category) {
-        put("mCategory", category);
+    public void setTimeSpentHrs(String time) {
+        put("timeSpent_hrs", time);
         saveInBackground();
     }
 
 
-    public double getDifficulty() {
-        return getDouble("mDifficulty");
+    public double getEffort() {
+        return getDouble("effort");
     }
 
-    public void setDifficulty(double difficulty) {
-        put("mDifficulty", difficulty);
+    public void setEffort(double effort) {
+        put("effort", effort);
         saveInBackground();
     }
 
@@ -74,36 +74,52 @@ public class Assignment extends ParseObject {
         saveInBackground();
     }
 
-    public String getName() {
-        return getString("mName");
+    public String getGrade() {
+        return getString("grade");
     }
 
-    public void setName(String title) {
-        put("mName", title);
+    public void setGrade(String grade) {
+        put("grade", grade);
         saveInBackground();
     }
 
-    public Date getDate() {
-        if (getDate("mDate") == null) {
-            put("mDate", new Date());
-        }
-        return getDate("mDate");
+    public Date getComplete() {
+
+        return getDate("complete");
     }
 
-    public void setDate(Date date) {
-        put("mDate", date);
+    public void setComplete(boolean status) {
+        put("mDate", status);
         saveInBackground();
     }
 
-    public boolean isDone() {
-        return getBoolean("mIsDone");
+    public double getPlanFollowed() {
+        return getDouble("planFollowed");
     }
 
-    public void setDone(boolean isDone, Context context) {
-        put("mIsDone", isDone);
-
+    public void setPlanFollowed(double planFollowed) {
+        put("planFollowed", planFollowed);
         saveInBackground();
     }
+
+    public String getFurtherImprovement() {
+        return getString("planFollowed");
+    }
+
+    public void setFurtherImprovement(String planFollowed) {
+        put("planFollowed", planFollowed);
+        saveInBackground();
+    }
+
+    public String getAssnId() {
+        return getString("assnId");
+    }
+
+    public void setAssnId(String id) {
+        put("assnId", id);
+        saveInBackground();
+    }
+
 
     public void delete(boolean delete, Context context){
         if (delete) {
@@ -116,7 +132,6 @@ public class Assignment extends ParseObject {
                             // continue with delete
                             deleteEventually();
                             //REFRESH HERE IS BETTER
-
                         }
                     })
                     .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
