@@ -98,6 +98,23 @@
                 <item name="N"> No </item>
         </string-array>
 
+        <string-array name="grade_selection_options">
+                <item name="A"> A+ </item>
+                <item name="B"> A </item>
+                <item name="C"> A- </item>
+                <item name="D"> B+ </item>
+                <item name="A"> B </item>
+                <item name="B"> B- </item>
+                <item name="C"> C+ </item>
+                <item name="D"> C </item>
+                <item name="A"> C- </item>
+                <item name="B"> D+ </item>
+                <item name="C"> D </item>
+                <item name="D"> D- </item>
+                <item name="C"> F </item>
+
+        </string-array>
+
 
         <string-array name="class_year_options">
             <item name="16-17"> 2016-2017 </item>
