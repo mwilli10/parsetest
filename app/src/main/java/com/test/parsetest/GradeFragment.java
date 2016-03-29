@@ -41,6 +41,8 @@ import android.widget.Toast;
 
 import com.test.parsetest.model.Grade;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
@@ -79,6 +81,8 @@ public class GradeFragment extends Fragment implements ActivityCompat.OnRequestP
 
 
     private Spinner mCompletedSpinner;
+    private Spinner mGradeSpinner;
+    private TextView mGradeTextView;
     private Grade mGrade;
     private Button mSaveButton;
     private RatingBar mPlanFollowedRatingBar;
@@ -182,8 +186,6 @@ public class GradeFragment extends Fragment implements ActivityCompat.OnRequestP
             }
         });
 
-
-
         mTimeField = (TextView) v.findViewById(R.id.assn_time_spent_txt_view);
         mTimeBox = (EditText) v.findViewById(R.id.assn_time_spent_box);
         mTimeBox.addTextChangedListener(new TextWatcher() {
@@ -238,14 +240,17 @@ public class GradeFragment extends Fragment implements ActivityCompat.OnRequestP
             }
         });
 
-        mCompletedField = (TextView) v.findViewById(R.id.assn_grade_txt_view);
-        mCompletedSpinner = (Spinner) v.findViewById(R.id.assn_grade_dropdown);
+        mGradeTextView = (TextView) v.findViewById(R.id.assn_grade_txt_view);
+        mGradeSpinner = (Spinner) v.findViewById(R.id.assn_grade_dropdown);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getContext(), R.array.grade_selection_options, android.R.layout.simple_spinner_dropdown_item);
         adapter
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // Apply the adapter to the spinner
-        mCompletedSpinner.setAdapter(adapter2);
+        mGradeSpinner.setAdapter(adapter2);
+
+
+
 
 
         mSaveButton = (Button) v.findViewById(R.id.btn_save);
@@ -258,6 +263,7 @@ public class GradeFragment extends Fragment implements ActivityCompat.OnRequestP
                 mDibbit.setEffort(mEffortRatingBar.getRating());
                 mDibbit.setTimeSpentHrs((double) Integer.parseInt(mTimeBox.getText().toString()));
                 mDibbit.setFurtherImprovement(mReflectionBox.getText().toString());
+                mDibbit.setGrade(mGradeSpinner.getSelectedItem().toString());
                 Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
 
             }

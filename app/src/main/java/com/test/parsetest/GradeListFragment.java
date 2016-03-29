@@ -104,8 +104,8 @@ public class  GradeListFragment extends Fragment{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_item_new_dibbit:
-                addDibbit();
-                return true;
+//                addDibbit();
+//                return true;
             case R.id.menu_item_refresh:
                 //updateUI();
 
@@ -181,7 +181,7 @@ public class  GradeListFragment extends Fragment{
 
         private TextView mTitleTextView;
         private TextView mDateTextView;
-        private CheckBox mDoneCheckBox;
+        private TextView mGradeTextView;
 
 
         private int mLocation;
@@ -190,9 +190,9 @@ public class  GradeListFragment extends Fragment{
             super(itemView);
             itemView.setOnClickListener(this);
 //            mBackground = (RelativeLayout) itemView.findViewById(R.id.list_item_background);
-            mTitleTextView = (TextView) itemView.findViewById(R.id.list_item_dibbit_title_text_view);
-            mDateTextView = (TextView) itemView.findViewById(R.id.list_item_dibbit_date_text_view);
-            mDoneCheckBox = (CheckBox) itemView.findViewById(R.id.list_item_dibbit_done_check_box);
+            mTitleTextView = (TextView) itemView.findViewById(R.id.list_item_assn_title_text_view);
+            mDateTextView = (TextView) itemView.findViewById(R.id.list_item_assn_date_text_view);
+            mGradeTextView = (TextView) itemView.findViewById(R.id.list_item_assn_grade_text_view);
         }
 
         public void bindDibbit(final Grade dibbit, final int location) {
@@ -204,16 +204,16 @@ public class  GradeListFragment extends Fragment{
             mTitleTextView.setText(mDibbit.getName());
             mDateTextView.setText(android.text.format.DateFormat.format("EEEE, MMM dd, yyyy", mDibbit.getDate()));
 
-            mDoneCheckBox.setChecked(false);
-            mDoneCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    //Set the dibbit's done property
-                }
-            });
+            String grade = mDibbit.getGrade();
+            if (grade != null) {
+                mGradeTextView.setText(grade);
+            }
+            else {
+                mGradeTextView.setText("?");
+            }
+            }
 
 
-        }
 
         @Override
         public void onClick(View v) {
@@ -244,7 +244,7 @@ public class  GradeListFragment extends Fragment{
         @Override
         public DibbitHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(R.layout.list_item_dibbit, parent, false);
+            View view = layoutInflater.inflate(R.layout.list_item_grade, parent, false);
             return new DibbitHolder(view);
         }
 
