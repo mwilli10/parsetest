@@ -99,7 +99,7 @@ public class Assignment extends ParseObject {
         return getBoolean("mIsDone");
     }
 
-    public void setDone(boolean isDone, Context context) {
+    public void setDone(boolean isDone) {
         put("mIsDone", isDone);
 
         saveInBackground();

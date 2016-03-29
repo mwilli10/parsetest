@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Start grades activity
+                Intent intent = new Intent(getApplicationContext(), GradeListActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -90,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_item_logout:
                 logout();
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -25,11 +25,7 @@ public class Grade extends ParseObject {
         //Constructor makes Dibbit with random ID and empty date
         mId = UUID.randomUUID();
         put("mUser", ParseUser.getCurrentUser());
-
-
-
         saveInBackground();
-
     }
 
     public UUID getId() {
@@ -49,7 +45,7 @@ public class Grade extends ParseObject {
         return getDouble("timeSpent_hrs");
     }
 
-    public void setTimeSpentHrs(String time) {
+    public void setTimeSpentHrs(double time) {
         put("timeSpent_hrs", time);
         saveInBackground();
     }
@@ -83,9 +79,9 @@ public class Grade extends ParseObject {
         saveInBackground();
     }
 
-    public Date getComplete() {
+    public boolean getComplete() {
 
-        return getDate("complete");
+        return getBoolean("complete");
     }
 
     public void setComplete(boolean status) {
@@ -117,6 +113,25 @@ public class Grade extends ParseObject {
 
     public void setAssnId(String id) {
         put("assnId", id);
+        saveInBackground();
+    }
+
+    public String getName(){
+        return getString("assnName");
+    }
+
+    public void SetName(String name){
+        put("assnName", name);
+        saveInBackground();
+    }
+
+
+    public Date getDate(){
+        return getDate("date");
+    }
+
+    public void SetDate(Date date){
+        put("date", date);
         saveInBackground();
     }
 

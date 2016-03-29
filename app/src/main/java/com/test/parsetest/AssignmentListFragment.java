@@ -208,7 +208,7 @@ public class  AssignmentListFragment extends Fragment{
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     //Set the dibbit's done property
-                    mDibbit.setDone(isChecked, getContext());
+                    mDibbit.setDone(isChecked);
                 }
             });
 
@@ -223,9 +223,11 @@ public class  AssignmentListFragment extends Fragment{
         }
     }
     public void addDibbit(){
-        Assignment dibbit = new Assignment();
-        AssignmentLab.get(getActivity()).addDibbit(dibbit);
-        Intent intent = AssignmentPagerActivity.newIntent(getActivity(), dibbit.getId());
+//        Assignment dibbit = new Assignment();
+//        AssignmentLab.get(getActivity()).addDibbit(dibbit);
+//        Intent intent = AssignmentPagerActivity.newIntent(getActivity(), dibbit.getId());
+//        startActivity(intent);
+        Intent intent = new Intent(getContext(), AssignmentNewActivity.class);
         startActivity(intent);
     }
 

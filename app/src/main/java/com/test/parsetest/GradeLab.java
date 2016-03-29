@@ -32,6 +32,7 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.ParseQuery;
 import com.test.parsetest.model.Assignment;
+import com.test.parsetest.model.Grade;
 
 
 /**
@@ -45,7 +46,7 @@ public class GradeLab {
     private boolean mDidDataSetChange = false;
 
 
-    private List<Assignment> mAssignments;
+    private List<Grade> mAssignments;
 
     private GradeLab(Context context) {
         mContext = context;
@@ -61,8 +62,8 @@ public class GradeLab {
     }
 
     public void updateDibbits() {
-        ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Assignment");
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Assignment");
+        ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Grade");
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Grade");
         query1.whereEqualTo("mUser", ParseUser.getCurrentUser());
         query2.whereEqualTo("isDone", true);
 
@@ -84,7 +85,7 @@ public class GradeLab {
 
 
                     for (ParseObject dibbit : dibbitList) {
-                        mAssignments.add((Assignment) dibbit);
+                        mAssignments.add((Grade) dibbit);
 
                     }
 
@@ -98,12 +99,12 @@ public class GradeLab {
 
     }
 
-    public List<Assignment> getDibbits() {
+    public List<Grade> getDibbits() {
         return mAssignments;
     }
 
-    public Assignment getDibbit(UUID id) {
-        for (Assignment dibbit : mAssignments) {
+    public Grade getDibbit(UUID id) {
+        for (Grade dibbit : mAssignments) {
             if (dibbit.getId().equals(id)) {
                 return dibbit;
             }

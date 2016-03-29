@@ -8,11 +8,9 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
-import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -28,28 +26,25 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.test.parsetest.model.Assignment;
+import com.test.parsetest.model.Grade;
 
-import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
-import java.util.UUID;
 
 /**
  * Created by Morgan on 2/2/16.
  */
-public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRequestPermissionsResultCallback {
+public class AssignmentNewFragment extends Fragment implements ActivityCompat.OnRequestPermissionsResultCallback {
 
 
-    private static final String ARG_DIBBIT_ID = "dibbit_id";
+
     private static final String DIALOG_DATE = "DialogDate";
 
     private static final int REQUEST_DATE = 0;
@@ -62,7 +57,7 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
     private TextView mCategoryField;
     private Date mDate;
     private Spinner mCategory;
-
+    private Grade mGrade;
     private Button mDateButton;
     private Button mSaveButton;
     private CheckBox mDoneCheckBox;
@@ -70,21 +65,10 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
     private EditText mDescriptionBox;
 
 
-    public static AssignmentFragment newInstance(UUID dibbitId) {
-        Bundle args = new Bundle();
-        args.putSerializable(ARG_DIBBIT_ID, dibbitId);
-
-        AssignmentFragment fragment = new AssignmentFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID dibbitId = (UUID) getArguments().getSerializable(ARG_DIBBIT_ID);
-        mDibbit = AssignmentLab.get(getActivity()).getDibbit(dibbitId);
-        mDate = mDibbit.getDate();
+        mDate = Calendar.getInstance().getTime();
 
 
     }
@@ -94,7 +78,6 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
         View v = inflater.inflate(R.layout.fragment_assignment, container, false);
 
         mTitleField = (EditText) v.findViewById(R.id.dibbit_title);
-        mTitleField.setText(mDibbit.getName());
         mTitleField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -112,24 +95,6 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
             }
         });
 
-//        mCategoryField = (EditText) v.findViewById(R.id.dibbit_category);
-//        mCategoryField.setText(mDibbit.getCategory());
-//        mCategoryField.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//                //This space intentionally left blank
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                //This space intentionally left blank
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                //This space intentionally left blank
-//            }
-//        });
         mCategoryField = (TextView) v.findViewById(R.id.dibbit_category);
         mCategory = (Spinner) v.findViewById(R.id.dibbit_category_dropdown);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.assignment_category_options, android.R.layout.simple_spinner_dropdown_item);
@@ -143,21 +108,20 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
         mDateButton = (Button) v.findViewById(R.id.dibbit_date);
         updateDate();
         // Open date dialogue
-        // If dibbit is in calendar, update it
+
         mDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager manager = getFragmentManager();
-                DatePickerFragment dialog = DatePickerFragment.newInstance(mDibbit.getDate());
-                dialog.setTargetFragment(AssignmentFragment.this, REQUEST_DATE);
+                DatePickerFragment dialog = DatePickerFragment.newInstance(mDate);
+                dialog.setTargetFragment(AssignmentNewFragment.this, REQUEST_DATE);
                 dialog.show(manager, DIALOG_DATE);
-
             }
         });
 
 
         mDoneCheckBox = (CheckBox) v.findViewById(R.id.dibbit_done);
-        mDoneCheckBox.setChecked(mDibbit.isDone());
+        mDoneCheckBox.setChecked(false);
         mDoneCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -170,7 +134,7 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
         mRatingBar = (RatingBar) v.findViewById(R.id.dibbit_difficulty_ratingBar);
         mRatingBar.setNumStars(NUM_STARS);
         mRatingBar.setStepSize(0.5f);
-        mRatingBar.setRating((float) mDibbit.getDifficulty());
+        mRatingBar.setRating((float) 0);
         mRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
@@ -180,7 +144,6 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
 
 
         mDescriptionBox = (EditText) v.findViewById(R.id.dibbit_description);
-        mDescriptionBox.setText(mDibbit.getDescription());
         mDescriptionBox.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -203,12 +166,22 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDibbit.setName(mTitleField.getText().toString());
-                mDibbit.setCategory(mCategory.getSelectedItem().toString());
-                mDibbit.setDone(mDoneCheckBox.isChecked());
-                mDibbit.setDifficulty(mRatingBar.getRating());
-                mDibbit.setDescription(mDescriptionBox.getText().toString());
-                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+
+                if (mTitleField.getText().toString() == ""  || mDescriptionBox.getText().toString() == ""){
+                    Toast.makeText(getContext(), "Please complete all fields", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    mDibbit = new Assignment();
+                    AssignmentLab.get(getActivity()).addDibbit(mDibbit);
+
+                    mDibbit.setName(mTitleField.getText().toString());
+                    mDibbit.setCategory(mCategory.getSelectedItem().toString());
+                    mDibbit.setDone(mDoneCheckBox.isChecked());
+                    mDibbit.setDifficulty(mRatingBar.getRating());
+                    mDibbit.setDescription(mDescriptionBox.getText().toString());
+                    mDibbit.setDate(mDate);
+                    Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -234,13 +207,14 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
         //Updates the date/time buttons
         if (requestCode == REQUEST_DATE) {
             Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
-            mDibbit.setDate(date);
+            mDate = date;
+
             updateDate();
         }
     }
 
     private void updateDate() {
-        mDateButton.setText(android.text.format.DateFormat.format("EEEE, MMM dd, yyyy", mDibbit.getDate()));
+        mDateButton.setText(android.text.format.DateFormat.format("EEEE, MMM dd, yyyy", mDate));
     }
 
     // Access Dibbit attributes and insert event to calendar using Content Resolver and Values
