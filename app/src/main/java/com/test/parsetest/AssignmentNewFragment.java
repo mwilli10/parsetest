@@ -120,15 +120,15 @@ public class AssignmentNewFragment extends Fragment implements ActivityCompat.On
         });
 
 
-        mDoneCheckBox = (CheckBox) v.findViewById(R.id.dibbit_done);
-        mDoneCheckBox.setChecked(false);
-        mDoneCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mDoneCheckBox.setChecked(isChecked);
-
-            }
-        });
+//        mDoneCheckBox = (CheckBox) v.findViewById(R.id.dibbit_done);
+//        mDoneCheckBox.setChecked(false);
+//        mDoneCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                mDoneCheckBox.setChecked(isChecked);
+//
+//            }
+//        });
 
         // Allow rating bar to be set to half value
         mRatingBar = (RatingBar) v.findViewById(R.id.dibbit_difficulty_ratingBar);
@@ -176,7 +176,7 @@ public class AssignmentNewFragment extends Fragment implements ActivityCompat.On
 
                     mDibbit.setName(mTitleField.getText().toString());
                     mDibbit.setCategory(mCategory.getSelectedItem().toString());
-                    mDibbit.setDone(mDoneCheckBox.isChecked());
+                    //mDibbit.setDone(mDoneCheckBox.isChecked());
                     mDibbit.setDifficulty(mRatingBar.getRating());
                     mDibbit.setDescription(mDescriptionBox.getText().toString());
                     mDibbit.setDate(mDate);

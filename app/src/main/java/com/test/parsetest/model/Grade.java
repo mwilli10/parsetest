@@ -85,7 +85,7 @@ public class Grade extends ParseObject {
     }
 
     public void setComplete(boolean status) {
-        put("mDate", status);
+        put("complete", status);
         saveInBackground();
     }
 
@@ -99,11 +99,11 @@ public class Grade extends ParseObject {
     }
 
     public String getFurtherImprovement() {
-        return getString("planFollowed");
+        return getString("furtherImprovement");
     }
 
     public void setFurtherImprovement(String planFollowed) {
-        put("planFollowed", planFollowed);
+        put("furtherImprovement", planFollowed);
         saveInBackground();
     }
 
@@ -120,7 +120,7 @@ public class Grade extends ParseObject {
         return getString("assnName");
     }
 
-    public void SetName(String name){
+    public void setName(String name){
         put("assnName", name);
         saveInBackground();
     }
@@ -130,7 +130,7 @@ public class Grade extends ParseObject {
         return getDate("date");
     }
 
-    public void SetDate(Date date){
+    public void setDate(Date date){
         put("date", date);
         saveInBackground();
     }

@@ -57,13 +57,6 @@
         android:textSize="24dp"
         android:paddingLeft="15dp" />
 
-    <!--<EditText-->
-        <!--android:hint="Exam, Paper, Project"-->
-        <!--android:layout_width="321dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginLeft="16dp"-->
-        <!--android:layout_marginRight="16dp"-->
-        <!--android:id="@+id/dibbit_category" />-->
 
     <Spinner
         android:layout_width="wrap_content"
@@ -135,12 +128,12 @@
 
     </LinearLayout>
 
-    <CheckBox android:id="@+id/dibbit_done"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginLeft="16dp"
-              android:layout_marginRight="16dp"
-              android:text="@string/dibbit_done_label"/>
+    <!--<CheckBox android:id="@+id/dibbit_done"-->
+              <!--android:layout_width="match_parent"-->
+              <!--android:layout_height="wrap_content"-->
+              <!--android:layout_marginLeft="16dp"-->
+              <!--android:layout_marginRight="16dp"-->
+              <!--android:text="@string/dibbit_done_label"/>-->
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -150,8 +143,20 @@
         android:id="@+id/btn_save"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/dibbit_photo"
-        android:layout_alignStart="@+id/dibbit_photo"
         android:layout_gravity="center_horizontal" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="109dp"
+        android:layout_height="wrap_content"
+        android:text="Update Tasks"
+        android:id="@+id/btn_update_tasks"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/btn_save"
+        android:layout_alignStart="@+id/dibbit_photo"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"/>
+
 
 
 </LinearLayout>

@@ -8,43 +8,98 @@
     android:weightSum="1"
     android:background="#2f7be8">
 
-    <ImageButton
-        android:layout_width="240dp"
-        android:layout_height="225dp"
-        android:id="@+id/assignmentButton"
-        android:layout_gravity="center_horizontal"
-        android:contentDescription="@string/content_decription_assignment_button"
-        android:src="@drawable/google_grade"
-        android:scaleType="fitXY"
-        android:background="#2f7be8" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="240dp"
+            android:layout_height="225dp"
+            android:id="@+id/assignmentButton"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/content_decription_assignment_button"
+            android:src="@drawable/google_grade"
+            android:scaleType="fitXY"
+            android:background="#2f7be8" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Assignments"
+            android:id="@+id/assignment_label_text_view"
+            android:gravity="center_horizontal"
+            android:textSize="25dp"
+            android:textIsSelectable="true"
+            android:textStyle="bold|italic" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_gravity="center_horizontal"
         android:weightSum="1"
-        android:layout_weight=".75">
+        android:layout_weight=".75"
+        android:paddingBottom="15dp">
 
 
-        <ImageButton
-            android:layout_width="185dp"
-            android:layout_height="275dp"
-            android:id="@+id/gradesButton"
-            android:contentDescription="@string/content_decription_grades_button"
-            android:src="@drawable/google_assn"
-            android:background="#2f7be8"
-            android:scaleType="fitXY" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
-        <ImageButton
-            android:layout_width="185dp"
-            android:layout_height="275dp"
-            android:id="@+id/hintButton"
-            android:contentDescription=""
-            android:src="@drawable/google_hint"
-            android:background="#2f7be8"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="false" />
+
+            <ImageButton
+                android:layout_width="185dp"
+                android:layout_height="317dp"
+                android:id="@+id/gradesButton"
+                android:contentDescription="@string/content_decription_grades_button"
+                android:src="@drawable/google_assn"
+                android:background="#2f7be8"
+                android:scaleType="fitXY"
+                android:paddingLeft="15dp"
+                android:layout_weight="0.60" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Grades"
+                android:id="@+id/grades_label_text_view"
+                android:gravity="center_horizontal"
+                android:textSize="25dp"
+                android:textStyle="bold|italic" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:layout_width="185dp"
+                android:layout_height="317dp"
+                android:id="@+id/hintButton"
+                android:contentDescription=""
+                android:src="@drawable/google_hint"
+                android:background="#2f7be8"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="false"
+                android:layout_weight="0.60"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hints"
+                android:id="@+id/hints_label_text_view"
+                android:gravity="center_horizontal"
+                android:textSize="25dp"
+                android:textStyle="bold|italic" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 

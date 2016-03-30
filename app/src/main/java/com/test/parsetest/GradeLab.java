@@ -65,6 +65,7 @@ public class GradeLab {
         ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Grade");
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Grade");
         query1.whereEqualTo("mUser", ParseUser.getCurrentUser());
+//        query1.setLimit(20);
         query2.whereEqualTo("isDone", true);
 
 

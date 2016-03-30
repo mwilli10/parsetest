@@ -94,8 +94,9 @@
         </string-array>
 
         <string-array name="assignment_completed_options">
-                <item name="Y"> Yes </item>
                 <item name="N"> No </item>
+                <item name="Y"> Yes </item>
+
         </string-array>
 
 

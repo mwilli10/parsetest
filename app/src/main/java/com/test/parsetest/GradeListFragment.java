@@ -22,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.parse.ParseUser;
@@ -43,6 +44,7 @@ public class  GradeListFragment extends Fragment{
     private LinearLayout mLinearLayout;
     private Button mAddButton;
     private int mChangedPosition;
+    private RelativeLayout mBackground;
 
 
 
@@ -161,12 +163,6 @@ public class  GradeListFragment extends Fragment{
             mLinearLayout.setVisibility(View.GONE);
         } else {
             mLinearLayout.setVisibility(View.VISIBLE);
-            mAddButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    addDibbit();
-                }
-            });
         }
 
         updateSubtitle();
@@ -189,7 +185,7 @@ public class  GradeListFragment extends Fragment{
         public DibbitHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-//            mBackground = (RelativeLayout) itemView.findViewById(R.id.list_item_background);
+            mBackground = (RelativeLayout) itemView.findViewById(R.id.grade_item_background);
             mTitleTextView = (TextView) itemView.findViewById(R.id.list_item_assn_title_text_view);
             mDateTextView = (TextView) itemView.findViewById(R.id.list_item_assn_date_text_view);
             mGradeTextView = (TextView) itemView.findViewById(R.id.list_item_assn_grade_text_view);
@@ -198,9 +194,10 @@ public class  GradeListFragment extends Fragment{
         public void bindDibbit(final Grade dibbit, final int location) {
             mDibbit = dibbit;
             mLocation = location;
-//            if (dibbit.isPublic()){
-//                mBackground.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.dull_light_green));
-//            }
+            if (mDibbit.getGrade() != null ){
+                mBackground.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.exams));
+            }else{mBackground.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.projects));}
+
             mTitleTextView.setText(mDibbit.getName());
             mDateTextView.setText(android.text.format.DateFormat.format("EEEE, MMM dd, yyyy", mDibbit.getDate()));
 
@@ -217,18 +214,15 @@ public class  GradeListFragment extends Fragment{
 
         @Override
         public void onClick(View v) {
-            Intent intent = GradePagerActivity.newIntent(getActivity(), mDibbit.getId());
-            startActivity(intent);
-            mChangedPosition = mLocation;
+            if (mDibbit.getGrade() != null){
+                Toast.makeText(getContext(), "You have already completed the reflection for this assignment", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Intent intent = GradePagerActivity.newIntent(getActivity(), mDibbit.getId());
+                startActivity(intent);
+                mChangedPosition = mLocation;
+            }
         }
-    }
-    public void addDibbit(){
-//        Assignment dibbit = new Assignment();
-//        AssignmentLab.get(getActivity()).addDibbit(dibbit);
-//        Intent intent = AssignmentPagerActivity.newIntent(getActivity(), dibbit.getId());
-//        startActivity(intent);
-//        Intent intent = new Intent(getContext(), AssignmentNewActivity.class);
-//        startActivity(intent);
     }
 
 

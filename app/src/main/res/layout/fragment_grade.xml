@@ -59,12 +59,6 @@
 
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/textView3" />
-
-            <TextView
                 android:id="@+id/assn_strat_txt_view"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -118,12 +112,14 @@
                 android:id="@+id/assn_time_spent_txt_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="How many hours did you spend assignment?"
+                android:text="How many hours did you spend on this assignment?"
                 android:textSize="18dp" />
 
             <EditText android:id="@+id/assn_time_spent_box"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned"
+                android:hint="positive digits only"/>
 
 
             <TextView
@@ -131,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Rate How much effort did you put into the assignment:"
+                android:text="Rate how much effort you put into the assignment:"
                 android:textSize="18dp" />
 
             <RatingBar
@@ -154,7 +150,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/assn_grade_txt_view"
-                android:text="Final Grade Received"/>
+                android:text="Final Grade Received"
+                android:textSize="18dp"/>
 
             <Spinner
                 android:layout_width="wrap_content"

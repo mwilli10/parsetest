@@ -105,6 +105,16 @@ public class Assignment extends ParseObject {
         saveInBackground();
     }
 
+    public boolean getTasks() {
+        return getBoolean("mTasks");
+    }
+
+    public void setTasks(boolean tasks) {
+        put("mTasks", tasks);
+
+        saveInBackground();
+    }
+
     public void delete(boolean delete, Context context){
         if (delete) {
             //

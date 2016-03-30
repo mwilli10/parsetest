@@ -1,11 +1,13 @@
 package com.test.parsetest;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +30,7 @@ import com.parse.ParseUser;
 import java.util.List;
 
 import com.test.parsetest.model.Assignment;
+import com.test.parsetest.model.Grade;
 
 /**
  * Created by Morgan on 2/2/16.
@@ -42,6 +45,7 @@ public class  AssignmentListFragment extends Fragment{
     private LinearLayout mLinearLayout;
     private Button mAddButton;
     private int mChangedPosition;
+    private Grade mGrade;
 
 
 
@@ -207,8 +211,27 @@ public class  AssignmentListFragment extends Fragment{
             mDoneCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    mDoneCheckBox.setChecked(mDibbit.isDone());
                     //Set the dibbit's done property
-                    mDibbit.setDone(isChecked);
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Completed Assignment")
+                            .setMessage("You sure you want to click this?  This assignment will be moved to the grades section")
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+                                    mDibbit.setDone(true);
+                                    mGrade = new Grade();
+                                    mGrade.setName(mDibbit.getName());
+                                    mGrade.setDate(mDibbit.getDate());
+                                }
+                            })
+                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
                 }
             });
 

@@ -65,6 +65,7 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
 
     private Button mDateButton;
     private Button mSaveButton;
+    private Button mSubtaskButton;
     private CheckBox mDoneCheckBox;
     private RatingBar mRatingBar;
     private EditText mDescriptionBox;
@@ -155,16 +156,16 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
             }
         });
 
-
-        mDoneCheckBox = (CheckBox) v.findViewById(R.id.dibbit_done);
-        mDoneCheckBox.setChecked(mDibbit.isDone());
-        mDoneCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mDoneCheckBox.setChecked(isChecked);
-
-            }
-        });
+//
+//        mDoneCheckBox = (CheckBox) v.findViewById(R.id.dibbit_done);
+//        mDoneCheckBox.setChecked(mDibbit.isDone());
+//        mDoneCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                mDoneCheckBox.setChecked(isChecked);
+//
+//            }
+//        });
 
         // Allow rating bar to be set to half value
         mRatingBar = (RatingBar) v.findViewById(R.id.dibbit_difficulty_ratingBar);
@@ -200,12 +201,13 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
             }
         });
         mSaveButton = (Button) v.findViewById(R.id.btn_save);
+
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mDibbit.setName(mTitleField.getText().toString());
                 mDibbit.setCategory(mCategory.getSelectedItem().toString());
-                mDibbit.setDone(mDoneCheckBox.isChecked());
+//                mDibbit.setDone(mDoneCheckBox.isChecked());
                 mDibbit.setDifficulty(mRatingBar.getRating());
                 mDibbit.setDescription(mDescriptionBox.getText().toString());
                 Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
@@ -213,10 +215,23 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
             }
         });
 
+        mSubtaskButton = (Button) v.findViewById(R.id.btn_update_tasks);
+        if (mDibbit.getTasks() == true){
+            mSubtaskButton.setVisibility(View.VISIBLE);
+            mSubtaskButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //TODO OPEN THE EDIT SUBTASK EVENT
+                }
+            });
+        }
+
         PackageManager packageManager = getActivity().getPackageManager();
 
         return v;
     }
+
 
     @Override
     public void onResume() {
@@ -346,30 +361,30 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
         // END_INCLUDE(onRequestPermissionsResult)
     }
 
-    public void askForGoals() {
-
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case DialogInterface.BUTTON_POSITIVE:
-//                        Intent intent = new Intent(getActivity(), subgoals.class);
-//                        startActivity();
-                        break;
-
-                    case DialogInterface.BUTTON_NEGATIVE:
-                        //No button clicked
-                        break;
-                }
-            }
-        };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Would you like to create sub-goals for this Assignment? " +
-                "Please remember that this is an important part of the metacognition process!")
-                .setPositiveButton("Yes", dialogClickListener)
-                .setNegativeButton("No", dialogClickListener).show();
-    }
+//    public void askForGoals() {
+//
+//        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                switch (which) {
+//                    case DialogInterface.BUTTON_POSITIVE:
+////                        Intent intent = new Intent(getActivity(), subgoals.class);
+////                        startActivity();
+//                        break;
+//
+//                    case DialogInterface.BUTTON_NEGATIVE:
+//                        //No button clicked
+//                        break;
+//                }
+//            }
+//        };
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//        builder.setMessage("Would you like to create sub-goals for this Assignment? " +
+//                "Please remember that this is an important part of the metacognition process!")
+//                .setPositiveButton("Yes", dialogClickListener)
+//                .setNegativeButton("No", dialogClickListener).show();
+//    }
 
 
 }
