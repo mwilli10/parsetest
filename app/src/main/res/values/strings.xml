@@ -50,7 +50,10 @@
 
 
 
-
+        <string name="friend_count_label">How many tasks would you like to break this assignment into?</string>
+        <string name="count_friends_button">Save</string>
+        <string name="you_have_friends">I have %1$s friends.</string>
+        <string name="friend_name">Task</string>
 
 
 

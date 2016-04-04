@@ -210,8 +210,6 @@ public class  GradeListFragment extends Fragment{
             }
             }
 
-
-
         @Override
         public void onClick(View v) {
             if (mDibbit.getGrade() != null){
@@ -262,9 +260,3 @@ public class  GradeListFragment extends Fragment{
 
 
 }
-
-
-
-
-
-

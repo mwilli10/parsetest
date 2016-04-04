@@ -120,15 +120,6 @@ public class AssignmentNewFragment extends Fragment implements ActivityCompat.On
         });
 
 
-//        mDoneCheckBox = (CheckBox) v.findViewById(R.id.dibbit_done);
-//        mDoneCheckBox.setChecked(false);
-//        mDoneCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                mDoneCheckBox.setChecked(isChecked);
-//
-//            }
-//        });
 
         // Allow rating bar to be set to half value
         mRatingBar = (RatingBar) v.findViewById(R.id.dibbit_difficulty_ratingBar);
@@ -163,11 +154,12 @@ public class AssignmentNewFragment extends Fragment implements ActivityCompat.On
             }
         });
         mSaveButton = (Button) v.findViewById(R.id.btn_save);
+        mSaveButton.setText("Save and Create Tasks");
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (mTitleField.getText().toString() == ""  || mDescriptionBox.getText().toString() == ""){
+                if (mTitleField.getText().toString().length() <=0 || mDescriptionBox.getText().toString().length() <= 0){
                     Toast.makeText(getContext(), "Please complete all fields", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -176,11 +168,13 @@ public class AssignmentNewFragment extends Fragment implements ActivityCompat.On
 
                     mDibbit.setName(mTitleField.getText().toString());
                     mDibbit.setCategory(mCategory.getSelectedItem().toString());
-                    //mDibbit.setDone(mDoneCheckBox.isChecked());
                     mDibbit.setDifficulty(mRatingBar.getRating());
                     mDibbit.setDescription(mDescriptionBox.getText().toString());
                     mDibbit.setDate(mDate);
                     Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+
+                    Intent i = new Intent(getContext(), TaskActivity.class);
+                    startActivity(i);
                 }
 
             }

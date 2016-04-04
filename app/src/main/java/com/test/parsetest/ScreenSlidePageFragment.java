@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ public class ScreenSlidePageFragment extends Fragment {
     private CheckBox mhintCheck;
     private String mCategory;
     private String mHint;
+    private Button mDone;
     private List<Hints> mHints;
     private static HintsLab sHintsLab;
     private static final String CATEGORY = "Category";
@@ -97,6 +99,15 @@ public class ScreenSlidePageFragment extends Fragment {
                     else{
                         mHints.get(mPageNumber).decrementHelpful();
                     }
+                }
+            });
+
+            mDone = (Button) rootView.findViewById(android.R.id.button1);
+            mDone.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getActivity().finish();
+
                 }
             });
         return rootView;

@@ -212,6 +212,7 @@ public class AssignmentFragment  extends Fragment implements ActivityCompat.OnRe
                 mDibbit.setDescription(mDescriptionBox.getText().toString());
                 Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
 
+                getActivity().finish();
             }
         });
 

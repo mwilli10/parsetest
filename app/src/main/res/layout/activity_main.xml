@@ -1,49 +1,64 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}"
-    android:background="@color/bg_main">
+    android:orientation="vertical"
+    tools:context="com.test.parsetest.TaskActivity"
+    android:background="#2f7be8">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/friend_count_label"
+                android:textSize="30dp"
+                android:gravity="center_horizontal"
+                android:textColor="#FFFFFF" />
+
+
+            <NumberPicker
+                android:id="@+id/friend_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
+
+            <com.test.parsetest.FriendNameView
+                android:id="@+id/friend_names"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <Button
+        android:id="@+id/count_friends_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:gravity="center"
-        android:orientation="vertical" >
+        style="?android:buttonBarButtonStyle"
+        android:text="@string/count_friends_button"
+        android:textColor="#C51162" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/welcome"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="@color/lbl_name"
-            android:textSize="24dp" />
-
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="13dp" />
-
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:background="@color/btn_logut_bg"
-            android:text="@string/btn_logout"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
-    </LinearLayout>
-
-</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/textView" />
+</LinearLayout>
