@@ -163,7 +163,7 @@ public class  AssignmentListFragment extends Fragment{
         if (dibbits.size() > 0) {
             mLinearLayout.setVisibility(View.GONE);
         } else {
-            mLinearLayout.setVisibility(View.VISIBLE);
+            mLinearLayout.setVisibility(View.GONE);
             mAddButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -181,10 +181,11 @@ public class  AssignmentListFragment extends Fragment{
     private class DibbitHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private Assignment mDibbit;
-
+        private TextView mDoneTextView;
         private TextView mTitleTextView;
         private TextView mDateTextView;
         private CheckBox mDoneCheckBox;
+        private ImageButton mTaskTextView;
 
 
         private int mLocation;
@@ -196,6 +197,8 @@ public class  AssignmentListFragment extends Fragment{
             mTitleTextView = (TextView) itemView.findViewById(R.id.list_item_dibbit_title_text_view);
             mDateTextView = (TextView) itemView.findViewById(R.id.list_item_dibbit_date_text_view);
             mDoneCheckBox = (CheckBox) itemView.findViewById(R.id.list_item_dibbit_done_check_box);
+            mDoneTextView = (TextView) itemView.findViewById(R.id.list_item_dibbit_done_text_view);
+            mTaskTextView = (ImageButton) itemView.findViewById(R.id.list_item_dibbit_task_text_view);
         }
 
         public void bindDibbit(final Assignment dibbit, final int location) {
@@ -206,6 +209,18 @@ public class  AssignmentListFragment extends Fragment{
 //            }
             mTitleTextView.setText(mDibbit.getName());
             mDateTextView.setText(android.text.format.DateFormat.format("EEEE, MMM dd, yyyy", mDibbit.getDate()));
+
+            mTaskTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(getContext(), TaskUpdateActivity.class);
+                    i.putExtra("ASSNID", mDibbit.getmUUID());
+                    startActivity(i);
+                    getActivity().finish();
+                }
+            });
+
+            mDoneTextView.setVisibility(View.VISIBLE);
 
             mDoneCheckBox.setChecked(mDibbit.isDone());
             mDoneCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -244,6 +259,8 @@ public class  AssignmentListFragment extends Fragment{
             startActivity(intent);
             mChangedPosition = mLocation;
         }
+
+
     }
     public void addDibbit(){
 //        Assignment dibbit = new Assignment();

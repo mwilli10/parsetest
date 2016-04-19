@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 
 import android.support.v7.app.AlertDialog;
+import android.widget.Toast;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
@@ -27,7 +28,6 @@ public class Assignment extends ParseObject {
         put("mUser", ParseUser.getCurrentUser());
          put("mIsDone", false);
 
-
         saveInBackground();
 
     }
@@ -44,6 +44,16 @@ public class Assignment extends ParseObject {
         put("mDescription", description);
         saveInBackground();
     }
+
+    public void setmUUID(){
+        put("mUUID", mId.toString());
+        saveInBackground();
+    }
+
+    public String getmUUID(){
+        return getString("mUUID");
+    }
+
 
     public String getCategory() {
         return getString("mCategory");
@@ -65,14 +75,15 @@ public class Assignment extends ParseObject {
     }
 
 
-    public int getEventId(){
-        return getInt("mEventId");
-    }
+   // public String getUUID(){
+     //   return getString("mUUID");
+    //}
 
-    public void setEventId(int eventID){
-        put("mEventId", eventID);
-        saveInBackground();
-    }
+//    public void setUUID(UUID uuid){
+//
+//        put("mUUID", uuid.toString());
+//        saveInBackground();
+//    }
 
     public String getName() {
         return getString("mName");
@@ -101,10 +112,17 @@ public class Assignment extends ParseObject {
 
     public void setDone(boolean isDone) {
         put("mIsDone", isDone);
-
         saveInBackground();
     }
 
+    public int getEventId(){
+        return getInt("calEventID");
+    }
+
+    public void setEventId(int calID){
+        put("calEventID", calID);
+        saveInBackground();
+    }
     public boolean getTasks() {
         return getBoolean("mTasks");
     }

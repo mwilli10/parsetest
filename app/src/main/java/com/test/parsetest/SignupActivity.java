@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -43,8 +45,11 @@ public class SignupActivity extends Activity {
 
         // Locate EditTexts in main.xml
         username = (EditText) findViewById(R.id.username);
+
         password = (EditText) findViewById(R.id.password);
+
         fullname = (EditText) findViewById(R.id.name);
+
         class_section_dropdown = (TextView) findViewById(R.id.class_section_dropdown_label);
         class_year_dropdown = (TextView) findViewById(R.id.class_year_dropdown_label);
         classSection = (Spinner) findViewById(R.id.class_section_dropdown);
@@ -70,29 +75,35 @@ public class SignupActivity extends Activity {
                     // STORE MORE THAN USERNAME AND PASSWORD IN PARSE DB
 
                     public void onClick(View arg0) {
+                        btnRegister.setEnabled(false);
+
                         // Retrieve the text entered from the EditText
                         usernametxt = username.getText().toString();
                         passwordtxt = password.getText().toString();
-//                        fullnametxt = fullname.getText().toString();
+                        fullnametxt = fullname.getText().toString();
 
                         // Force user to fill up the form
-                        if (usernametxt.equals("") || passwordtxt.equals("")) {
+                        if (usernametxt.equals("") || passwordtxt.equals("") || fullnametxt.equals("")) {
                             Toast.makeText(getApplicationContext(),
                                     "Please complete the sign up form",
                                     Toast.LENGTH_LONG).show();
 
                         } else {
+
+
                             // Save new user data into Parse.com Data Storage
                             ParseUser user = new ParseUser();
                             user.setUsername(usernametxt);
                             user.setPassword(passwordtxt);
+//                            user.put("classYear", Integer.parseInt(classYear.getSelectedItem().toString()));
+//                            user.put("classBlock", classSection.getSelectedItem().toString());
                             user.signUpInBackground(new SignUpCallback() {
                                                         public void done(ParseException e) {
                                                             if (e == null) {
                                                                 // Show a simple Toast message upon successful registration
                                                                 Toast.makeText(getApplicationContext(),
-                                                                        "Successfully Signed up,no logging you in.",
-                                                                        Toast.LENGTH_LONG).show();
+                                                                        "Successfully signed up,now logging you in.",
+                                                                        Toast.LENGTH_SHORT).show();
 
                                                                 // Send data to Parse.com for verification
                                                                 ParseUser.logInInBackground(usernametxt, passwordtxt, new LogInCallback() {
@@ -101,12 +112,9 @@ public class SignupActivity extends Activity {
                                                                         if ((e == null) & (user != null)) {
                                                                             // Valid user... Let them in the app
                                                                             startActivity(new Intent(SignupActivity.this, MainActivity.class));
-                                                                            Toast.makeText(getApplicationContext(),
-                                                                                    ("Welcome back " + usernametxt),
-                                                                                    Toast.LENGTH_SHORT).show();
-                                                                            finish();
+//
                                                                         } else {
-                                                                            Toast.makeText(getApplicationContext(), "No such user exists, please signup or try again", Toast.LENGTH_LONG).show();
+                                                                            Toast.makeText(getApplicationContext(), "No such user exists, please signup or try again", Toast.LENGTH_SHORT).show();
                                                                         }
                                                                     }
                                                                 });
@@ -114,8 +122,11 @@ public class SignupActivity extends Activity {
 
                                                             } else {
                                                                 Toast.makeText(getApplicationContext(),
-                                                                        "Sign up Error", Toast.LENGTH_LONG).show();
+                                                                        "Sign up Error. Username already Exists", Toast.LENGTH_LONG).show();
+
                                                             }
+                                                            btnRegister.setEnabled(true);
+
                                                         }
                                                     }
 
@@ -129,6 +140,4 @@ public class SignupActivity extends Activity {
 
 
             }
-
-
     }

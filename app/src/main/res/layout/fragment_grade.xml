@@ -118,8 +118,7 @@
             <EditText android:id="@+id/assn_time_spent_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberSigned"
-                android:hint="positive digits only"/>
+                android:inputType="numberSigned" />
 
 
             <TextView

@@ -49,10 +49,10 @@ public class HintsLab {
         query1.whereEqualTo("type", "Paper");
 
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Hints");
-        query1.whereEqualTo("type", "Project");
+        query2.whereEqualTo("type", "Project");
 
         ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Hints");
-        query1.whereEqualTo("type", "Exam");
+        query3.whereEqualTo("type", "Exam");
 
         List<ParseQuery<ParseObject>> queries = new ArrayList<ParseQuery<ParseObject>>();
         queries.add(query1);
@@ -64,12 +64,10 @@ public class HintsLab {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
                     mHints.clear();
-                    Toast.makeText(mContext, "PASS",
-                            Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(mContext, "PASS",
+//                            Toast.LENGTH_SHORT).show();
                     for (ParseObject hint : objects) {
                         mHints.add((Hints) hint);
-//                        Toast.makeText(mContext, "PASS" + ((Hints) hint).getHintText(),
-//                                Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
@@ -80,7 +78,6 @@ public class HintsLab {
         });
 
     }
-
 
     public List<Hints> getHintsAll() {
 
@@ -97,8 +94,6 @@ public class HintsLab {
                         hints.add(mHints.get(i));
                     }
                 }
-                Toast.makeText(mContext , hints.toString(),
-                        Toast.LENGTH_SHORT).show();
                 return hints;
 
             case "Project":

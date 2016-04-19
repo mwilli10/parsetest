@@ -1,0 +1,80 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.test.parsetest.TaskUpdateActivity"
+    android:background="#2f7be8">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/friend_count_label"
+                android:textSize="30dp"
+                android:gravity="center_horizontal"
+                android:textColor="#FFFFFF" />
+
+
+            <com.test.parsetest.TaskUpdateView
+                android:id="@+id/tasks_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center">
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Add Task"
+                android:id="@+id/add_task_button"
+                android:src="@mipmap/up_arrow" />
+
+
+
+            <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Remove Task"
+            android:id="@+id/remove_task_button"
+                android:src="@mipmap/down_arrow" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/save_task_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:buttonBarButtonStyle"
+        android:text="@string/count_friends_button"
+        android:textColor="#C51162" />
+</LinearLayout>

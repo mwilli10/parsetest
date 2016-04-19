@@ -275,7 +275,21 @@ public class GradeFragment extends Fragment implements ActivityCompat.OnRequestP
                                 .setMessage("You sure this is your final feedback?")
                                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        // continue with delete
+                                        if (mCompletedSpinner.getSelectedItem().toString().equals("Yes")) {
+                                            mDibbit.setComplete(true);
+                                        } else {
+                                            mDibbit.setComplete(false);
+                                        }
+                                        mDibbit.setPlanFollowed(mPlanFollowedRatingBar.getRating());
+                                        mDibbit.setEffort(mEffortRatingBar.getRating());
+                                        mDibbit.setTimeSpentHrs((double) Integer.parseInt(mTimeBox.getText().toString()));
+                                        mDibbit.setFurtherImprovement(mReflectionBox.getText().toString());
+                                        mDibbit.setGrade(mGradeSpinner.getSelectedItem().toString());
+
+
+                                        setStrategies();
+                                        mDibbit.setStrategiesUsed(Strategies);
+                                        Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
                                     }
                                 })
                                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -287,23 +301,6 @@ public class GradeFragment extends Fragment implements ActivityCompat.OnRequestP
                                 .show();
 
 
-                        if (mCompletedSpinner.getSelectedItem().toString().equals("Yes")) {
-                            mDibbit.setComplete(true);
-                        } else {
-                            mDibbit.setComplete(false);
-                        }
-                        mDibbit.setPlanFollowed(mPlanFollowedRatingBar.getRating());
-                        mDibbit.setEffort(mEffortRatingBar.getRating());
-                        mDibbit.setTimeSpentHrs((double) Integer.parseInt(mTimeBox.getText().toString()));
-                        mDibbit.setFurtherImprovement(mReflectionBox.getText().toString());
-                        mDibbit.setGrade(mGradeSpinner.getSelectedItem().toString());
-
-
-                        setStrategies();
-                        mDibbit.setStrategiesUsed(Strategies);
-
-
-                        Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getContext(), "Please complete all fields", Toast.LENGTH_SHORT).show();
                     }

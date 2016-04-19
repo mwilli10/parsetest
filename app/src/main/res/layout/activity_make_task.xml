@@ -36,8 +36,8 @@
             <com.test.parsetest.FriendNameView
                 android:id="@+id/friend_names"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
 
     </ScrollView>

@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * Created by Morgan on 3/22/16.
@@ -18,6 +20,7 @@ import java.util.Calendar;
 public class SelectDateFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
     private Button edit;
+    private String weekday;
 
     public SelectDateFragment(Button edit) {
         this.edit = edit;
@@ -29,15 +32,18 @@ public class SelectDateFragment extends DialogFragment implements DatePickerDial
         int yy = calendar.get(Calendar.YEAR);
         int mm = calendar.get(Calendar.MONTH);
         int dd = calendar.get(Calendar.DAY_OF_MONTH);
+
+        SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
+        weekday = dayFormat.format(calendar.getTime());
         return new DatePickerDialog(getActivity(), this, yy, mm, dd);
     }
 
-    public void onDateSet(DatePicker view, int yy, int mm, int dd) {
-        populateSetDate(edit, yy, mm + 1, dd);
+    public void onDateSet(DatePicker view, int yy, int mm, int dd ) {
+        populateSetDate(edit, yy, mm + 1, dd, weekday);
     }
 
-    public void populateSetDate(Button edit, int year, int month, int day) {
-        edit.setText(month + "/" + day + "/" + year + " ");
+    public void populateSetDate(Button edit, int year, int month, int day, String weekday) {
+        edit.setText(weekday + " " +  month + "/" + day + "/" + year + " ");
     }
 
 }

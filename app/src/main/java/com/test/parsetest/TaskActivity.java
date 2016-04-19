@@ -8,7 +8,6 @@ import android.Manifest;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,31 +24,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.NumberPicker;
-import android.widget.NumberPicker.OnValueChangeListener;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.test.parsetest.model.Task;
+
 import java.util.Date;
-import java.util.List;
 import java.util.TimeZone;
 
 
@@ -58,10 +39,15 @@ public class TaskActivity extends AppCompatActivity {
     private NumberPicker mFriendCountPicker;
     private FriendNameView mFriendNameView;
     private Button mSaveButton;
+    private String mAssnID;
+
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_make_task);
+
+        Bundle extra = getIntent().getExtras();
+        mAssnID = extra.getString("ASSNID");
 
         mFriendCountPicker = (NumberPicker) findViewById(R.id.friend_count);
         mFriendNameView = (FriendNameView) findViewById(R.id.friend_names);
@@ -89,8 +75,8 @@ public class TaskActivity extends AppCompatActivity {
 //                    i.putStringArrayListExtra("dates", new ArrayList<String>(dates));
 //                    startActivity(i);
                     addAllToCal(tasks, dates);
-                    Intent i = new Intent(getApplicationContext(), AssignmentListActivity.class);
-                    startActivity(i);
+//                    Intent i = new Intent(getApplicationContext(), AssignmentListActivity.class);
+//                    startActivity(i);
                     finish();
                 }
             }
@@ -118,9 +104,10 @@ public class TaskActivity extends AppCompatActivity {
 
 
     public void addAllToCal(List<String> tasks,List<Date> dates ){
-
+        int calID;
         for (int i =0 ; i < tasks.size(); i++){
-            addEventToCalendar(tasks.get(i), dates.get(i));
+            calID = addEventToCalendar(tasks.get(i), dates.get(i));
+            Task task = new Task(calID,mAssnID, tasks.get(i), dates.get(i));
         }
     }
 
@@ -147,7 +134,7 @@ public class TaskActivity extends AppCompatActivity {
         values.put(CalendarContract.Events.DTSTART, startMillis);
         values.put(CalendarContract.Events.DTEND, endMillis);
         //TODO
-        values.put(CalendarContract.Events.TITLE, "Task Checkpoint");
+        values.put(CalendarContract.Events.TITLE, "Assignment Task Checkpoint");
         values.put(CalendarContract.Events.DESCRIPTION, task );
         values.put(CalendarContract.Events.CALENDAR_ID, calID);
         values.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().toString());

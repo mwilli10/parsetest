@@ -35,21 +35,6 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
     public List<Hints> mHints;
     private static HintsLab sHintsLab;
 
-//    private String[] paper = {"Have someone edit your paper for things that don’t make sense before finalizing. Read your paper out loud to spot grammatical errors.",
-//            " Review your notes and textbooks to get supporting facts for your paper. Write the body of your paper first, then go back to the intro and conclusion to know what to address.",
-//            "Write an outline of your paper (intro, paragraph 1 topic, paragraph 2 topic, conclusion). Create a rough draft of your paper – don’t worry about making smooth transitions, just get the important parts down first!",
-//            "If you have a choice of topics, chose the one you understand best. Discuss your strongest arguments first, then your weakest argument last. ",
-//            "Read the question and break it down to smaller parts that you need to answer. Ask your teacher for help formulating your topic or thesis statement."};
-//    private String[] exam = {"Create practice tests to review what you know/don’t know. Check over your answers before turning it in.",
-//            "Use notecards to study. Teach someone else what you are studying! Teaching helps you put together knowledge in your head.",
-//            "Create a study schedule of half an hour time blocks the week before the test. Break down the unit (ex. Westward expansion) into smaller topics (ex. Louisiana purchase, Lewis/Clark expedition etc.)",
-//            "Before checking your notes, take a minute to see what you remember about the topic of the test. Ask yourself: which topics did I not understand that well?",
-//            "Ask questions in class on topics you are unclear about. When taking the test, make sure you highlight key words like NOT, OR, AND, etc."};
-//    private String[] project = {"If you have to present, practice your presentation in front of friends/family. If you created a poster or model, make sure everything is securely glued or taped in place the night before you bring it to class.",
-//            "Use the library or the internet to find more facts for more evidence. Revisit the rubric to make sure you don’t miss anything as you work.",
-//            "Break it down to smaller parts and create deadlines for yourself for those parts. Gather all the supplies you need before starting",
-//            " For group projects, assign roles based on people’s interests and strengths. Allow more time to work on the tasks that you struggle with",
-//            "Read the rubric thoroughly. Ask the teacher if you are unsure how to do something."};
 
     private static final int NUM_PAGES = 5;
 

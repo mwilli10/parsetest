@@ -23,10 +23,10 @@ public class ParseApplication extends Application {
 
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
+        ParseObject.registerSubclass(Task.class);
         ParseObject.registerSubclass(Assignment.class);
         ParseObject.registerSubclass(Hints.class);
         ParseObject.registerSubclass(Grade.class);
-//        ParseObject.registerSubclass(Grades.class);
         // If you would like all objects to be private by default, remove this
         // line.
         defaultACL.setPublicReadAccess(true);

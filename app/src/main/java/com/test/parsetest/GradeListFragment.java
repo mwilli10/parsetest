@@ -162,7 +162,7 @@ public class  GradeListFragment extends Fragment{
         if (dibbits.size() > 0) {
             mLinearLayout.setVisibility(View.GONE);
         } else {
-            mLinearLayout.setVisibility(View.VISIBLE);
+            mLinearLayout.setVisibility(View.GONE);
         }
 
         updateSubtitle();

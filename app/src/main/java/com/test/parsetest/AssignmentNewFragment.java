@@ -171,10 +171,16 @@ public class AssignmentNewFragment extends Fragment implements ActivityCompat.On
                     mDibbit.setDifficulty(mRatingBar.getRating());
                     mDibbit.setDescription(mDescriptionBox.getText().toString());
                     mDibbit.setDate(mDate);
+                    //creates one unique ID for the assignment
+                    //this is only ever done once
+                    mDibbit.setmUUID();
                     Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
 
+
                     Intent i = new Intent(getContext(), TaskActivity.class);
+                    i.putExtra("ASSNID", mDibbit.getmUUID());
                     startActivity(i);
+                    getActivity().finish();
                 }
 
             }

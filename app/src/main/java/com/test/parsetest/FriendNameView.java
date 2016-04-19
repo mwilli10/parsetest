@@ -5,6 +5,7 @@ package com.test.parsetest;
  */
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.util.AttributeSet;
@@ -32,7 +33,7 @@ public class FriendNameView extends LinearLayout {
     private int mEditTextResId;
     private int mDatePickerResId;
     private FragmentManager fragmentManager;
-    final String mTime = "11:49:00 AM";
+    final String mTime = "11:59:00 PM";
 
     public FriendNameView(Context context) {
         this(context, null);
@@ -77,6 +78,8 @@ public class FriendNameView extends LinearLayout {
             v = inflater.inflate(mEditTextResId, this, true);
         } else {
             EditText et = new EditText(getContext());
+            et.setTextColor(Color.parseColor("#FFFFFF"));
+
             et.setHint(R.string.friend_name);
             v = et;
         }
@@ -92,6 +95,7 @@ public class FriendNameView extends LinearLayout {
         } else {
             final Button dp = new Button(getContext());
             dp.setHint("Select Due Date");
+            dp.setTextColor(Color.parseColor("#FFFFFF"));
             dp.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -131,12 +135,15 @@ public class FriendNameView extends LinearLayout {
 
     public List<String> getFriendDates() {
         String dateString;
+        String source;
         List<String> dates = new ArrayList<>();
         for (int i = 0; i < getChildCount(); i++) {
             View v = getChildAt(i);
             if (v instanceof Button) {
                 Button et = (Button) v;
-                dateString = et.getText().toString() + mTime;
+                source = et.getText().toString();
+                dateString = source.substring(source.indexOf(" ") + 1) + mTime;
+
                 dates.add(dateString);
             }
 
