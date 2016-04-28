@@ -103,7 +103,8 @@ public class TaskUpdateView extends LinearLayout{
                 String month = (String) android.text.format.DateFormat.format("MM", date);
                 String year = (String) android.text.format.DateFormat.format("yyyy", date);
                 String day = (String) android.text.format.DateFormat.format("dd", date);
-                dp.setText(dayOfTheWeek + " " + month + "/" + day + "/" + year + " ");
+//                dp.setText(dayOfTheWeek + " " + month + "/" + day + "/" + year + " ");
+                dp.setText(month + "/" + day + "/" + year + " ");
             }
             dp.setTextColor(Color.parseColor("#FFFFFF"));
                     dp.setOnClickListener(new View.OnClickListener() {
@@ -268,7 +269,7 @@ public class TaskUpdateView extends LinearLayout{
                 Button et = (Button) v;
                 String source = et.getText().toString();
                 String substr=source.substring(source.indexOf(" ") + 1);
-                String datestr = substr + mTime;
+                String datestr = et.getText().toString() + mTime;
                 dates.add(datestr);
             }
 

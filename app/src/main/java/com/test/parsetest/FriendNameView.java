@@ -142,7 +142,7 @@ public class FriendNameView extends LinearLayout {
             if (v instanceof Button) {
                 Button et = (Button) v;
                 source = et.getText().toString();
-                dateString = source.substring(source.indexOf(" ") + 1) + mTime;
+                dateString = et.getText().toString() + mTime;
 
                 dates.add(dateString);
             }

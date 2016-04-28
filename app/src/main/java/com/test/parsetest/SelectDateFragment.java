@@ -43,7 +43,7 @@ public class SelectDateFragment extends DialogFragment implements DatePickerDial
     }
 
     public void populateSetDate(Button edit, int year, int month, int day, String weekday) {
-        edit.setText(weekday + " " +  month + "/" + day + "/" + year + " ");
+        edit.setText(month + "/" + day + "/" + year + " ");
     }
 
 }

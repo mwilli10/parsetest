@@ -23,6 +23,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 
@@ -90,6 +91,7 @@ public class TaskActivity extends AppCompatActivity {
             for (String date : dateStrs) {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
                 Date convertedDate = new Date();
+//                Date date = new GregorianCalendar(year, month, day, hour, minute).getTime();
                 try {
                     convertedDate = dateFormat.parse(date);
                     dates.add(convertedDate);

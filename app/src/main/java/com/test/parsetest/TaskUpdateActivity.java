@@ -123,7 +123,7 @@ public class TaskUpdateActivity extends AppCompatActivity {
                         if (tasks.size()>0) {
                             addAllToCalAndDb(tasks, dates);
                         }
-                       // finish();
+                        finish();
                     }
                 }
             });
